@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{background-color: var(--background-color,#FFFFFF);}
+
+    #divv{
+    width: calc(var(--width ,100) * 1px);
+    height: calc(var(--height ,100) * 1px);
+    border-radius: calc(var(--b-r,0) * 1%);
+    background-color: var(--box-color,#FFD700);
+    box-shadow: 
+        calc(var(--x-position ,3) * 1px)
+        calc(var(--y-position ,3) * 1px)
+        calc(var(--blur ,5) * 1px)
+        calc(var(--spread ,6) * 1px)
+        var(--shadow-color,#000)
+    }
+</style>
+<body>
+    W<input type="number" name="width" value="100">
+    H<input type="number" name="height" value="100">
+    B-r<input type="number" name="b-r" value="0">
+    X<input type="number" name="x-position" value="3">
+    Y<input type="number" name="y-position" value="3">
+    B<input type="number" name="blur" value="5">
+    S<input type="number" name="spread" value="6">
+    Sh-c<input type="color" name="shadow-color" value="#000">
+    Bo-c<input type="color" name="box-color" value="#FFD700">
+    Ba-c<input type="color" name="background-color" value="#FFFFFF">
+</body>
+<script>
+    const div=document.createElement('div')
+    div.setAttribute('id','divv')
+    document.body.append(div)
+
+    const input=document.querySelectorAll('input')
+    input.forEach(function(i){
+        i.addEventListener('input',function(z){
+            document.documentElement.style.setProperty(
+                `--${z.target.name}`,
+                z.target.value
+            )
+        })
+    })
+</script>
+</html>

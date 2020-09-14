@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="all">
+        <div class="text">
+            <span class="title">Card Matching</span>
+            <span class="timer">50</span>
+            <span>Flips </span>
+            <span class="flips">0</span>
+        </div>
+        <div class="cards-container">
+            <div class="cards exclamation">
+                <div class="front">!</div>
+                <span class="back">&spades;</span>
+            </div>
+            <div class="cards exclamation">
+                <div class="front">!</div>
+                <span class="back">&spades;</span>
+            </div>
+            <div class="cards hash">
+                <div class="front">#</div>
+                <span class="back">&spades;</span>
+            </div>
+            <div class="cards hash">
+                <div class="front">#</div>
+                <span class="back">&spades;</span>
+            </div>
+            <div class="cards at">
+                <div class="front">@</div>
+                <span class="back">&spades;</span>
+            </div>
+            <div class="cards at">
+                <div class="front">@</div>
+                <span class="back">&spades;</span>
+            </div>
+            <div class="cards dollar">
+                <div class="front">$</div>
+                <span class="back">&spades;</span>
+            </div>
+            <div class="cards dollar">
+                <div class="front">$</div>
+                <span class="back">&spades;</span>
+            </div>
+            <div class="cards percent">
+                <div class="front">%</div>
+                <span class="back">&spades;</span>
+            </div>
+            <div class="cards percent">
+                <div class="front">%</div>
+                <span class="back">&spades;</span>
+            </div>
+            <div class="cards pow">
+                <div class="front">^</div>
+                <span class="back">&spades;</span>
+            </div>
+            <div class="cards pow">
+                <div class="front">^</div>
+                <span class="back">&spades;</span>
+            </div>
+            <div class="cards and">
+                <div class="front">&</div>
+                <span class="back">&spades;</span>
+            </div>
+            <div class="cards and">
+                <div class="front">&</div>
+                <span class="back">&spades;</span>
+            </div>
+            <div class="cards star">
+                <div class="front">*</div>
+                <span class="back">&spades;</span>
+            </div>
+            <div class="cards star">
+                <div class="front">*</div>
+                <span class="back">&spades;</span>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    *{
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    }
+
+    body{
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items:center;
+        background-color: rgb(39, 39, 39);
+        perspective: 800px;
+    }
+    .all{
+        width: 500px;
+        height: 700px;
+        position: relative;
+        border: 1px solid white;
+    }
+    .cards-container{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 560px;
+        display: grid;
+        grid-template-columns: repeat(4,calc(500px/4));
+    }
+    .text{
+        font-size: 2rem;
+        color: white;
+        width: 100%;   
+        display: flex;
+        justify-content: space-evenly;
+        align-items:center; 
+        top:8%;  
+        position: absolute;
+    }
+    .cards{
+        border: 1px solid white;
+        position: relative;
+        transition: transform 500ms ease-in-out;
+        transform-style: preserve-3d;
+        background-color: rgb(39, 39, 39);
+        color: white;
+    }
+    .front,.back{
+        position: absolute;
+        width: 100%;
+        line-height: 140px;
+        font-size: 3rem;
+        text-align: center;
+    }
+    .front{
+        transform: rotateY(180deg);
+    }
+    .cards.clicked{
+        transform: rotateY(180deg);
+    }
+</style>
+<script>
+    const timer=document.querySelector('.timer')
+    const CurrentTime=setInterval(time,1000)
+    function time(){
+        if(timer.innerText==0){
+            window.alert('Out Of Time !')
+            const a=window.prompt('Play Again')
+            if(a!='yes'){window.close()}
+            else{
+                reset()
+            }
+            return
+        }
+        const checkVictory=cards.every(c=>c.classList.contains('clicked'))
+        if(checkVictory){
+            window.alert('HURRAH !')
+            const a=window.prompt('Play Again')
+            if(a!='yes'){window.close()}
+            else{
+                reset()
+            }
+            return
+        }
+        timer.innerText=timer.innerText-=1
+    }
+
+    function reset(){
+        shuffleCards(cards)
+        flips.innerText=0
+        cards.forEach(card=>card.classList.remove('clicked'))
+        timer.innerText=51
+    }
+
+    const cards=Array.from(document.querySelectorAll('.cards'))
+    // const cards=document.getElementsByClassName('cards')  
+    //SHUFFLE
+    function shuffleCards(cardsArray){
+        for (let i = cardsArray.length - 1; i > 0; i--) {
+            let randIndex = Math.floor(Math.random() * (i + 1));
+            cardsArray[randIndex].style.order = i;
+            cardsArray[i].style.order = randIndex;
+        }
+    }
+    shuffleCards(cards)
+    let flips=document.querySelector('.flips')
+    const everyClickedCard=[]
+    let animationPlaying;
+
+    function animationTimeout(){    
+        setTimeout(aa,500)
+        function aa(){
+            animationPlaying=false
+        }
+    }
+
+    cards.forEach((card)=>{card.addEventListener('click',function(){
+        const firstTime=cards.some(c=>c.classList.contains('clicked'))
+        if(card.classList.contains('clicked')){return}
+        if(animationPlaying){return}
+
+        if(!firstTime||everyClickedCard.length==0){
+            animationPlaying=true
+            card.classList.add('clicked') 
+            everyClickedCard.push(card)
+            flips.innerText++
+            animationTimeout()
+            return
+        }
+        const checkCard=everyClickedCard[0].children[0].innerText==card.children[0].innerText
+        if(checkCard){
+            animationPlaying=true
+            card.classList.add('clicked')
+            everyClickedCard.pop()
+            flips.innerText++
+            animationTimeout()
+            return
+        }
+        else if(!checkCard){
+            animationPlaying=true
+            card.classList.add('clicked')
+            setTimeout(ff,500)
+            animationTimeout()
+            function ff(){
+                everyClickedCard[0].classList.remove('clicked')
+                everyClickedCard.pop()
+                card.classList.remove('clicked')
+            }
+            flips.innerText++
+            return   
+        }
+    })})
+</script>
+</html>      

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="calc">
+        <!-- <button id="button">Del</button> -->
+        <input type="text" class="input">
+        <div>
+            <div class="nums ce">CE</div>
+            <button class="nums" id="button">Del</button>
+        </div>       
+        <div class="nums divide">/</div>
+        <div class="nums multiply">*</div>
+        <div class="nums minus">-</div>
+        <div class="d1 nums">1</div>
+        <div class="d2 nums">2</div>
+        <div class="d3 nums">3</div>
+        <div class="nums plus">+</div>
+        <div class="d4 nums">4</div>
+        <div class="d5 nums">5</div>
+        <div class="d6 nums">6</div>
+        <div class="d7 nums">7</div>
+        <div class="d8 nums">8</div>
+        <div class="d9 nums">9</div>
+        <div class="nums equals">=</div>
+        <div class="nums zero">0</div>
+        <div class="nums dot">.</div>
+    </div>
+</body>
+<style>
+    *{
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    }
+
+    body{
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items:center;
+        background-color: rgb(39, 39, 39);
+    }
+    .calc{
+        position: relative;
+        background-color: rgb(39, 39, 39);
+        border: 1px solid white;
+        height: 500px;
+        width: 300px;
+        display: grid;
+        grid-template-columns: repeat(4,calc(300px/4));
+        grid-template-rows:repeat(5,calc(420px/5));
+        align-content: end;
+    }
+    .nums{
+        color: white;
+        text-align: center;
+        line-height: calc(420px/5);
+        font-size: 2rem;
+        cursor:pointer;
+    }  
+    .input{
+        color: white;
+        text-align: end;
+        box-sizing: border-box;
+        position: absolute;
+        width: 100%;
+        height: 80px;
+        font-size: 2rem;
+        background-color: rgb(29, 29, 29);
+    }
+    .plus{
+        grid-row: 2/4;
+        grid-column-start: 4;
+    }
+    .equals{
+        grid-row: 4/6;
+        grid-column-start: 4;
+    }
+    .zero{
+        grid-column:1/3
+    }
+    .nums:hover,#button:hover{
+        background-color: rgb(0, 0, 0);
+    }
+    .ce,#button{
+        font-size: 1.5rem;
+        line-height: calc(210px/5);
+    }
+   #button{
+    outline: none;
+    border: none;
+    background-color: rgb(39, 39, 39);
+    width: 100%;
+   }
+</style>
+<script>
+    const input=document.querySelector('.input')
+    const d1=document.querySelector('.d1')
+    const d2=document.querySelector('.d2')
+    const d3=document.querySelector('.d3')
+    const d4=document.querySelector('.d4')
+    const d5=document.querySelector('.d5')
+    const d6=document.querySelector('.d6')
+    const d7=document.querySelector('.d7')
+    const d8=document.querySelector('.d8')
+    const d9=document.querySelector('.d9')
+
+    d1.addEventListener('click',()=>input.value+=1)
+    d2.addEventListener('click',()=>input.value+=2)
+    d3.addEventListener('click',()=>input.value+=3)
+    d4.addEventListener('click',()=>input.value+=4)
+    d5.addEventListener('click',()=>input.value+=5)
+    d6.addEventListener('click',()=>input.value+=6)
+    d7.addEventListener('click',()=>input.value+=7)
+    d8.addEventListener('click',()=>input.value+=8)
+    d9.addEventListener('click',()=>input.value+=9)
+
+    const divide=document.querySelector('.divide')
+    const multiply=document.querySelector('.multiply')
+    const plus=document.querySelector('.plus')
+    const minus=document.querySelector('.minus')
+
+
+    divide.addEventListener('click',()=>{
+        let check=input.value.slice(input.value.length-1,input.value.length)
+        if(check=='-'||check=='+'||check=='*'||check=='/'||input.value=='')return     
+        input.value=eval(input.value);
+        input.value+='/'
+    })
+    multiply.addEventListener('click',()=>{
+        let check=input.value.slice(input.value.length-1,input.value.length)
+        if(check=='-'||check=='+'||check=='*'||check=='/'||input.value=='')return 
+        input.value=eval(input.value);
+        input.value+='*'
+    })
+    plus.addEventListener('click',()=>{
+        let check=input.value.slice(input.value.length-1,input.value.length)
+        if(check=='-'||check=='+'||check=='*'||check=='/'||input.value=='')return 
+        input.value=eval(input.value);
+        input.value+='+'
+    })
+    minus.addEventListener('click',()=>{
+        let check=input.value.slice(input.value.length-1,input.value.length)
+        if(check=='-'||check=='+'||check=='*'||check=='/'||input.value=='')return 
+        input.value=eval(input.value);
+        input.value+='-'
+    })
+
+    const equals=document.querySelector('.equals')
+    const zero=document.querySelector('.zero')
+    const dot=document.querySelector('.dot')
+    const ce=document.querySelector('.ce')
+
+    zero.addEventListener('click',()=>input.value+=0)
+    dot.addEventListener('click',()=>input.value+='.')
+    ce.addEventListener('click',()=>input.value='')
+    equals.addEventListener('click',()=>{
+        let check=input.value.slice(input.value.length-1,input.value.length)
+        if(check=='-'||check=='+'||check=='*'||check=='/'||input.value=='')return 
+        input.value=eval(input.value)
+    })
+
+    const button=document.getElementById('button')
+    button.addEventListener('click',()=>{
+        input.value=input.value.slice(0,-1)
+        // input.value=input.value.slice(0,input.value.length)
+    })
+</script>
+</html>

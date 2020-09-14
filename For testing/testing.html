@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <ul class="ul" id="ul">
+        <li>one</li>
+        <li>tw</li>
+        <li>thr</li>
+        <li>fou</li>
+    </ul> -->
+    <!-- <input type="text" id="input"> -->
+   <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adip
+       isicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, assumenda?</p> -->
+    <!-- <div id="div" style="width: 300px;height: 200px;background-color: steelblue;margin-top: 10px;"></div> -->
+
+    <!-- <input type="radio" id="radio">
+    <label for="radio" id="todo">ToDoList
+    <div id="tododiv"></div></label> -->
+</body>
+<style>
+    /* #todo{
+        position: relative;
+    }
+    #tododiv{
+        position: absolute;
+        transition: all 200ms ease-in-out;
+        height: 0px;
+        width: 0px;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: steelblue;
+    }
+    #tododiv.line{
+        width: 100%; 
+        height: 5%;
+    } */
+</style>
+<script>
+    // const ul=document.querySelector('ul')
+    // var oe=ul.children[2]
+    // var ne=document.createElement("li")
+    // ne.textContent='i am new'
+    // ul.replaceChild(ne,oe)
+    // // ul.removeChild(oe)
+    // ul.removeChild(ul.children[3])
+    // console.log(ul)
+    // console.log(ul.hasAttribute('idd'))
+    // ul.removeAttribute('id')
+    // console.log(ul.hasAttribute('id'))
+    // ul.children[2].after(ne)
+    // console.log(ul)
+    // ul.insertBefore(ne,ul.children[0])
+    // ul.children[0].before(ne)
+
+    // input.addEventListener("keypress",function(e){
+    //     // console.log(e.key)
+    //     // console.log(e.keyCode)
+    //     // console.log(e.code)
+    //     // console.log(e.ctrlKey)
+    //     // console.log(e)
+
+    //     if(e.keyCode==13){console.log(e.target.value)}
+    // })
+    
+    // const a=['a','c','d','f','g']
+    // console.log(a.indexOf('d'))
+
+    // const a=true
+    // console.log(typeof(a))
+    // console.log(Number(a))
+    // console.log(Number.NEGATIVE_INFINITY);
+    // console.log(Number.POSITIVE_INFINITY)
+    // console.log(Number.isFinite(Number.POSITIVE_INFINITY))
+    // console.log(Number.parseInt(9.6))
+
+    // window.addEventListener('resize',function(){
+    // console.log(innerHeight,innerWidth)
+    //  a.innerText='iw:'+window.innerWidth+'ih'+innerHeight
+    // })
+
+    // const a=document.createElement('p')
+    // document.body.appendChild(a)
+    // const a=window.open("https://dfs","newWindow", "menubar=true,location=true,resizable=false,scrollbars=false,width=400,height=300,top=200,left=200")
+    // const b=document.createElement('button')
+    // b.innerText=444
+    // document.body.appendChild(b)
+    // b.addEventListener('click',function(){a.close()})
+    // const c=document.createElement('button')
+    // c.innerText='move'
+    // document.body.appendChild(c)
+    // c.addEventListener('click',function(){a.moveBy(50,0);a.focus()})
+
+    // const d=document.getElementById('div')
+    // window.addEventListener('scroll',function () {      
+    // console.log('top: '+d.getBoundingClientRect().top)
+    // // console.log('ih: '+innerHeight)
+    // if(d.getBoundingClientRect().top<innerHeight/2){d.style.background='red'}
+    // else{d.style.background='steelblue'}
+    // })
+    // document.body.style.height='200vh'
+    // d.addEventListener('click',(e)=>{  
+    // console.log('clicked',e.target.tagName);
+    // // console.log('clientX', e.clientX);   //from the left of visible area of page
+    // // console.log('pageX', e.pageX);       //from the left of whole page (scroll)
+    // // console.log('screenX', e.screenX);      //from the left of the whole screen
+    // // console.log('offsetX', e.offsetX);   //from the left of the element
+    // })
+
+    // const a=[1,2,3,4,6,23,78]
+    // const b=a.filter((i)=>i%2==0)
+    // console.log(b)
+    // const c=b.map((i)=>i*2)
+    // console.log(c)
+    // const d=c.reduce((result,i)=>result+i,0)
+    // console.log(d)
+
+    // const a=[6,2,3,23,781,55,4,0]
+    // console.log(a.sort())
+    
+    // var b=[]
+    // a.forEach((i)=>b.push(i*2))
+    // obj={
+    //     1:'44',
+    //     'dkf':true,
+    //     44:null
+    // }
+    // console.log(Object.keys(obj))
+    // console.log(Object.values(obj))
+    // console.log(Object.entries(obj))
+    // const a=Object.assign({nn:99,34:false},obj)
+    // console.log(a)
+
+    // var c=5
+    // console.log(c++);console.log(c)
+    // console.log(++c);console.log(c)
+    // const a=['33333',99,999,9]
+    // const b=a.splice(0,c++)
+    // console.log(b);console.log(c)
+
+    // const input=document.getElementById('input')
+    // window.addEventListener('click',()=>{
+    //     if(input.value=='undefined'){console.log(7)}
+    //     else{input.value=eval(input.value)}
+    // })
+
+    // const todo=document.getElementById('todo')
+    // const tododiv=document.getElementById('tododiv')
+    // todo.addEventListener('click',()=>tododiv.classList.toggle('line'))
+</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="big">
+        <div class="small" draggable="true">1</div>
+        <div class="small" draggable="true">2</div>
+        <div class="small" draggable="true">3</div>
+    </div>
+    <div id="hr"></div>
+    <div class="big">
+        <div class="small" draggable="true">4</div>
+        <div class="small" draggable="true">5</div>
+        <div class="small" draggable="true">6</div>
+    </div>
+</body>
+<style>
+    .small{
+        height: 40px;
+        width: 100%;
+        background-color: steelblue;
+        border: 1px solid black;
+        color: white;
+        font-size: 1.5rem;
+    
+    }
+    .big{
+        width: 200px;
+        background-color: grey;
+    }
+    #hr{
+        width: 202px;
+        height: 10px;
+        background-color: black;
+    }
+</style>
+<script>
+    const big=document.querySelectorAll('.big')
+    const small=document.querySelectorAll('.small')
+
+    small.forEach(function(s){
+        s.addEventListener('dragstart',()=>{
+            console.log(88)
+        })
+    })
+
+    big.forEach(function(b){
+        b.addEventListener('dragover',function(){
+            small.forEach(function(s){
+                s.addEventListener('dragover',()=>{
+                    b.appendChild(s)
+                })
+            })
+        })
+    })
+</script>
+</html>

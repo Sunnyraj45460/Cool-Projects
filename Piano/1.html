@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <audio id="a" src="file:///C:/Users/Sunny/Downloads/PianoNotes/piano-a_A_major.wav"></audio>
+    <audio id="c" src="file:///C:/Users/Sunny/Downloads/PianoNotes/piano-c_C_major.wav"></audio>
+    <audio id="d" src="file:///C:/Users/Sunny/Downloads/PianoNotes/piano-d_D_major.wav"></audio>
+    <audio id="f" src="file:///C:/Users/Sunny/Downloads/PianoNotes/piano-f_F_major.wav"></audio>
+    <audio id="g" src="file:///C:/Users/Sunny/Downloads/PianoNotes/piano-g_G_major.wav"></audio>
+
+    <div class="piano">
+        <div class="white wone"></div>
+        <div class="white one"></div>
+        <div class="white two"></div>
+        <div class="white three"></div>
+        <div class="white four"></div>
+        <div class="white five"></div>
+        <div class="white six"></div>
+
+        <div class="black bone"></div>
+        <div class="black btwo"></div>
+        <div class="black bthree"></div>
+        <div class="black bfour"></div>
+        <div class="black bfive"></div>
+    </div>
+</body>
+<script>
+    const a=document.querySelector('#a')
+    const c=document.querySelector('#c')
+    const d=document.querySelector('#d')
+    const f=document.querySelector('#f')
+    const g=document.querySelector('#g')
+
+    const wone=document.querySelector('.wone')
+    const one=document.querySelector('.one')
+    const two=document.querySelector('.two')
+    const three=document.querySelector('.three')
+    const four=document.querySelector('.four')
+    // const five=document.querySelector('.five')
+    // const g=document.querySelector('.six')
+    // const g=document.querySelector('#g')
+    // const g=document.querySelector('#g')
+    // const g=document.querySelector('#g')
+    // const g=document.querySelector('#g')
+    // const g=document.querySelector('#g')
+
+    window.addEventListener('keydown',function(e){
+        if(e.repeat) return
+        if(e.key=='a'){a.currentTime=0;a.play();wone.classList.add('press')}
+        if(e.key=='c'){c.currentTime=0;c.play();one.classList.add('press')}
+        if(e.key=='d'){d.currentTime=0;d.play();two.classList.add('press')}
+        if(e.key=='f'){f.currentTime=0;f.play();three.classList.add('press')}
+        if(e.key=='g'){g.currentTime=0;g.play();four.classList.add('press')}
+    })
+    a.addEventListener('ended',function(){wone.classList.remove('press')})
+    c.addEventListener('ended',function(){one.classList.remove('press')})
+    d.addEventListener('ended',function(){two.classList.remove('press')})
+    f.addEventListener('ended',function(){three.classList.remove('press')})
+    g.addEventListener('ended',function(){four.classList.remove('press')})
+</script>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body{
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items:center;
+        background-color: rgb(39, 39, 39);
+        z-index: -111;
+        perspective: 800px;
+    }
+    .piano{
+        width: 560px;
+        height: 300px;
+        position: relative;
+    }
+    .white{
+        position: absolute;
+        height: 100%;
+        background-color: white;
+        width: 80px; 
+        border: 1px black solid;
+    }
+    .one{
+        transform: translateX(80px);
+    }
+    .two{
+        transform: translateX(160px);
+    }
+    .three{
+        transform: translateX(240px);
+    }
+    .four{
+        transform: translateX(320px);
+    }
+    .five{
+        transform: translateX(400px);
+    }
+    .six{
+        transform: translateX(480px);
+    }
+
+    .black{
+        position: absolute;
+        height: 60%;
+        background-color: black;
+        width: 50px; 
+    }
+    .bone{
+        transform: translateX(50px);
+    }
+    .btwo{
+        transform: translateX(135px);
+    }
+    .bthree{
+        transform: translateX(295px);
+    }
+    .bfour{
+        transform: translateX(375px);
+    }
+    .bfive{
+        transform: translateX(455px);
+    }
+
+    .wone.press{
+        transform:translateZ(-15px);
+        background-color: rgb(221, 214, 214);      
+    }
+    .one.press{
+        transform:translateX(80px) translateZ(-15px);
+        background-color:rgb(221, 214, 214);
+    }
+    .two.press{
+        transform:translateX(160px) translateZ(-15px);
+        background-color:rgb(221, 214, 214);
+    }
+    .three.press{
+        transform:translateX(240px) translateZ(-15px);
+        background-color:rgb(221, 214, 214);
+    }
+    .four.press{
+        transform:translateX(320px) translateZ(-15px);
+        background-color:rgb(221, 214, 214);
+    }
+    .five.press{
+        transform:translateX(400px) translateZ(-15px);
+        background-color:rgb(221, 214, 214);
+    }
+    .six.press{
+        transform:translateX(480px) translateZ(-15px);
+        background-color:rgb(221, 214, 214);
+    }
+</style>
+</html>

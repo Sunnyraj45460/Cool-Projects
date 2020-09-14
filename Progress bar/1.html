@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="--width:10%" class="progress-bar" d='loading...'></div>
+</body>
+<style>
+    *,*::after,*::before{
+        box-sizing: border-box;
+    }
+    body{
+        margin: 0;
+        padding: 0;
+    }
+    .progress-bar{
+        position: relative;
+        margin: 200px;
+        margin-left: 700px;
+        width: 500px;
+        height: 3em;
+        background-color: black;
+        border-radius: 1.5em;
+        color: white;
+    }
+
+    .progress-bar::before{
+        position: absolute;
+        content: attr(d);
+        background-color: steelblue;
+        /* width: calc(var(--width,10)*1%); */
+        width: var(--width,10%);
+        max-width: 100%;
+        height: 70%;
+        top: 0.6em;
+    }
+</style>
+<script>
+    const p=document.getElementsByClassName('progress-bar')[0]
+    setInterval(f,5)
+    function f(){
+        const cs=getComputedStyle(p)
+        const w=parseFloat(cs.getPropertyValue('--width'))
+        // p.style.setProperty('--width',w+.1)
+        p.style.setProperty('--width',`${w+.1}%`)
+    }
+</script>
+</html>

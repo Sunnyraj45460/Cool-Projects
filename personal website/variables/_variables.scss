@@ -1,0 +1,12 @@
+$transition-all:all 500ms ease-in-out;
+$transition-top:top 500ms ease-in-out;
+$transition-right:right 500ms ease-in-out;
+
+$white:white;
+$orange:#ff652f;
+$black:#272727;
+
+@function set-color($color){
+    @if(lightness($color)>40%){@return black;}
+    @else{@return white;}
+};

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="btn">
+        <div class="side default-side">Hover Me</div>
+        <div class="side hover-side">Loremsldk</div>
+    </div>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            perspective: 800px;
+        }
+        .btn{
+            margin-left: 80px;
+            position: relative;
+            height: 150px;
+            width: 450px;
+            transform-style: preserve-3d;
+            transition: transform 300ms ease-in-out;
+            transform: translateZ(-75px);
+        }
+        .btn:hover{
+            transform: rotateX(-90deg) translateY(75px);
+        }
+        .side{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        .default-side{
+            background-color: white;
+            border: 10px solid steelblue;
+            color: steelblue;
+            transform: translateZ(75px);
+            backface-visibility: hidden;
+
+        }
+        .hover-side{
+            background-color: steelblue;
+            color: white;
+            transform: rotateX(90deg) translateZ(75px);
+            backface-visibility: hidden;
+        }
+    </style>
+</body>
+</html>

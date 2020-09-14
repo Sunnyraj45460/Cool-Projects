@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span class="first"></span>
+    <span class="operator"></span>
+    <span class="second"></span><br>
+    <input type="number">
+    <button>Submit</button>
+    <div class="judge"></div>
+</body>
+<script>
+    var first=document.querySelector('.first')
+    var second=document.querySelector('.second')
+    var operator=document.querySelector('.operator')
+    var judge=document.querySelector('.judge')
+
+    
+
+    function mcq(){
+        fn=Math.ceil(Math.random()*10)
+        sn=Math.ceil(Math.random()*10)
+        op=Math.ceil(Math.random()*4)
+        
+        var ans
+        if(op==1){op='+';ans=fn+sn}
+        if(op==2){op='-';ans=fn-sn}
+        if(op==3){op='*';ans=fn*sn}
+        if(op==4){op='/';ans=fn/sn}
+        first.textContent=fn
+        second.textContent=sn
+        operator.textContent=op
+
+        var button=document.querySelector('button')
+        var input=document.querySelector('input')
+        
+        button.addEventListener('click',function(){
+            setTimeout(f,2000)
+            if(input.value==ans){judge.textContent='Right'}
+            else{judge.textContent='Wrong';}          
+            setTimeout(mcq,2000)
+            })
+    }
+    mcq()
+    function f(){judge.textContent=''}
+</script>
+</html>

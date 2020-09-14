@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="div"a='lorem lorem'></div>
+</body>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .div{
+        width: 200px;
+        height: 100px;
+        background-image:url('file:///C:/Users/Sunny/Downloads/Download/project-1.jpg');
+        background-position: center;
+        background-size: cover;
+        position: relative;
+    }
+    .div::before,.div::after{
+        position: absolute;
+        content: '';
+        top: -3rem;
+        left: 25%;
+        transform: scale(0);
+        transition: 150ms transform;
+        transform-origin: bottom center;
+    }
+    .div::before{
+        content: attr(a);
+        color: white;
+        padding: .5rem;
+        width: max-content;
+        background: black;
+    }
+    .div:hover::before,.div:hover:after{
+        transform: scale(1);
+    }
+    .div::after{
+        border: 10px solid transparent;
+        transform-origin: top center;
+        border-top-color:black ;
+        top:-1rem;
+        left: 5.4rem;
+        box-sizing: border-box;
+    }
+</style>
+</html>

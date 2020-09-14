@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="score">0</div>
+    <div class="ground"></div>    
+</body>
+<style>
+    *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    }
+
+    body{
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items:center;
+        background-color: rgb(39, 39, 39);
+    }
+    .ground{
+        width: calc(30*(100px/3));
+        height: calc(20*(100px/3));
+        border: 1px solid white;
+        display: grid;
+        grid-template-columns: repeat(30,calc(100px/3));
+        grid-template-rows: repeat(20,calc(100px/3));
+        position: relative;
+        overflow: hidden;
+    }
+    .snake{
+        background-color: white;
+        position: absolute;
+        width: calc(100px/3);
+        height: calc(100px/3);
+        border: 1px solid black;
+    }
+    .food{
+        background-color: rgb(228, 145, 145);
+        position: absolute;
+        width: calc(100px/3);
+        height: calc(100px/3);
+        border: 1px solid black;
+    }
+    .head{
+        background-color: black;
+        position: absolute;
+        width: calc(100px/3);
+        height: calc(100px/3);
+        border: 1px solid white;
+    }
+    .score{
+        position: absolute;
+        color: white;
+        top: 0;
+        font-size: 3rem;
+    }
+</style>
+<script>
+    const ground=document.querySelector(".ground")
+    const score=document.querySelector(".score")
+
+    let time=0
+    let speed=8
+    function game(currentTime){
+        requestAnimationFrame(game)
+        diff=(currentTime-time)/1000
+        if(diff<1/speed)return
+        time=currentTime
+
+        runSnake()
+        foods()
+        checkCrash()
+    }
+    requestAnimationFrame(game)
+    
+    const direction=[
+        {x:15,y:11}
+    ]
+    
+    function runSnake(){
+        if(direction[0].y<1){direction[0].y=20}
+        else if(direction[0].y>20){direction[0].y=1}
+        else if(direction[0].x<1){direction[0].x=30}
+        else if(direction[0].x>30){direction[0].x=1}
+
+        controlSnake()
+        for(let i=direction.length-1;i>0;i--){
+            direction[i]={...direction[i-1]}
+        }
+        direction[0].x+=dir.x
+        direction[0].y+=dir.y
+
+        ground.innerHTML=''
+        
+        const snakeart=document.createElement('div')
+        snakeart.style.gridColumnStart=direction[0].x
+        snakeart.style.gridRowStart=direction[0].y
+        snakeart.classList.add("head")
+        ground.appendChild(snakeart)
+        
+        const bodies=direction.slice(1,direction.length)
+        bodies.forEach(d=>{
+            const snakePart=document.createElement('div')
+            snakePart.style.gridColumnStart=d.x
+            snakePart.style.gridRowStart=d.y
+            snakePart.classList.add("snake")
+            ground.appendChild(snakePart)
+        })
+    }
+
+    let dir={x:0,y:0}
+    function controlSnake(){
+        window.addEventListener("keydown",e=>{
+            if(e.key=='ArrowUp'&&dir.y==0){dir.y=-1;dir.x=0}
+            if(e.key=='ArrowDown'&&dir.y==0){dir.y=1;dir.x=0}
+            if(e.key=='ArrowLeft'&&dir.x==0){dir.x=-1;dir.y=0}
+            if(e.key=='ArrowRight'&&dir.x==0){dir.x=1;dir.y=0}
+        }) 
+    }
+
+    let gcs=Math.ceil(Math.random()*30)
+    let grs=Math.ceil(Math.random()*20)
+    function generateFood(){
+        const food=document.createElement('div')
+        food.style.gridColumnStart=gcs
+        food.style.gridRowStart=grs
+        food.classList.add("food")
+        ground.appendChild(food)
+    }
+
+    function foods(){
+        if(direction[0].x==gcs&&direction[0].y==grs){
+            gcs=Math.ceil(Math.random()*30)
+            grs=Math.ceil(Math.random()*20)
+            direction.push({x:0,y:0})
+            score.innerText++
+        }
+        generateFood()
+    }
+
+    function checkCrash(){
+        const bodies=direction.slice(1,direction.length)
+        const check=bodies.forEach(part=>{
+            if(part.x==direction[0].x && part.y==direction[0].y){
+                if(confirm('Game Over')){window.location.reload();return}
+                else{window.close();return}
+            }
+        })
+    }
+</script>
+</html>

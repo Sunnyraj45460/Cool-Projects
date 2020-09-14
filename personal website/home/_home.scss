@@ -1,0 +1,71 @@
+.body-div{
+    .name-div{
+        color: $white;
+        position: absolute;
+        top: 40%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .hi,.pro{
+            font-size: 150%;
+        }
+        .first{
+            margin-top: -2.3vh;
+            font-size: 500%;
+            .last{
+                font-weight: 700;
+                color: $orange;
+            }
+        }
+        .hr{
+            width: 100vw;
+            height: 0.26vh;
+            margin-top: 0.4vh;
+            background-color: $white;
+        }
+        .pro{
+            margin-top: 1.6vh;
+        }
+    }
+}
+
+.social-icons{
+    position: fixed;
+    bottom: 2vh;
+    left: 3vh;
+
+    i{
+        color: $white;
+        margin-right:1.8vh;
+        transition: $transition-all;
+    }
+    & :hover{
+        color: $orange;
+    }
+}
+
+.footer{
+    color: white;
+    display: inline;
+    position: absolute;
+    bottom: 1.5vh;
+    right: 1.5vh;
+}
+
+@media(max-width:930px){
+    .social-icons{
+        left: 15px;
+        bottom: 0;
+        height: 200px;
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .footer{
+        right:-55px;
+        bottom: 65px;
+        color: white;
+        transform:rotate(90deg) ;
+    }
+}

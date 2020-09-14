@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span class="span">
+        <span class="enter">Enter</span>
+        <input class="input" type="text">
+    </span>
+</body>
+<style>
+    .input{
+        border: none;
+        outline: none;
+        background-color: transparent;
+        border-bottom: 0.8px solid black;
+        transition: all 500ms ease-in-out;
+    }
+    .span{
+        top: 100px;
+        position: relative;
+    }
+    .enter{
+        position: absolute;
+        transition: all 500ms ease-in-out;
+    }
+    .enter.e{
+        font-size: .5rem;
+        transform: translateY(-8px);
+    }
+    .input.e{
+        border-bottom: 0.8px solid steelblue;
+        pointer-events: none;
+    }
+</style>
+<script>
+    document.querySelector('.span').addEventListener('click',()=>{
+        document.querySelector('.enter').classList.toggle('e')
+        document.querySelector('.input').classList.toggle('e')
+        document.querySelector('.input').value=''
+    })
+</script>
+</html>

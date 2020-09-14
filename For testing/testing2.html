@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <span class="sec">100</span> -->
+    <!-- <span class="box">
+        <span>#</span>
+        <span>*</span>
+        <span>/</span>
+    </span> -->
+    <!-- <span class="timer"></span> -->
+    <div class="movable"></div>
+</body>
+<style>
+    /* body{
+        overflow: hidden;
+    }
+    .movable{
+        background-color: steelblue;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: calc(var(--top)*1px);
+        left: calc(var(--left)*1px);
+        --top:0;
+        --left:0;
+    } */
+</style>
+<script>
+    // setInterval(func,1000)
+    // function func(){
+    //     // const a=new Date
+    //     // document.querySelector('.sec').innerText=a.getSeconds()
+    //     const sec=document.querySelector('.sec')
+    //     if(sec.innerText==0)return
+    //     sec.innerText=sec.innerText-1
+    // }
+
+    // const box=document.querySelector('.box')
+    // box.replaceChild(box.children[1],box.children[0])
+
+    // const everyClickedCard=[]
+    // everyClickedCard.push(7)
+    // console.log(everyClickedCard)
+
+    // const timer=document.getElementsByClassName('timer')[0]
+    //     let min=10
+    //     sec=1
+    // function checkTimer(){
+    //     if(sec==0){sec=60;min--}
+    //     else if(sec==0&&min==0){clearInterval(interval)}
+    //     sec--
+    // timer.innerText=min+':'+sec
+    // }
+    // checkTimer()
+    // const interval=setInterval(checkTimer,1000)
+
+    // const movable=document.querySelector('.movable')
+    
+    // window.addEventListener('keydown',(e)=>{
+    // const currentTop=Number(getComputedStyle(movable).getPropertyValue('--top'))
+    // const currentLeft=Number(getComputedStyle(movable).getPropertyValue('--left'))
+    
+    // console.log(window.innerHeight)
+    // // console.log(window.innerWidth)
+    // console.log(movable.getBoundingClientRect().bottom)
+
+    // if(e.key=='w'){
+    //     if(movable.getBoundingClientRect().top<=0){
+    //         movable.style=`--top:${window.innerHeight-movable.getBoundingClientRect().height};--left:${currentLeft}`
+    //         return
+    //     }
+    //     movable.style=`--top:${currentTop-20};--left:${currentLeft}`
+    // }
+    // else if(e.key=='s'){
+    //     if(movable.getBoundingClientRect().bottom>=window.innerHeight){
+    //         movable.style=`--top:${0};--left:${currentLeft}`
+    //         return
+    //     }
+    //     movable.style=`--top:${currentTop+20};--left:${currentLeft}`
+    // }
+    // else if(e.key=='a'){
+    //     if(movable.getBoundingClientRect().left<=0){
+    //         movable.style=`--left:${window.innerWidth-movable.getBoundingClientRect().width};--top:${currentTop}`
+    //         return
+    //     }
+    //     movable.style=`--left:${currentLeft-20};--top:${currentTop}`
+    // }
+    // else if(e.key=='d'){
+    //     if(movable.getBoundingClientRect().right>=window.innerWidth){
+    //         movable.style=`--left:${0};--top:${currentTop}`
+    //         return
+    //     }
+    //     movable.style=`--left:${currentLeft+20};--top:${currentTop}`
+    // }
+    // })
+
+    // Object Cloning
+    const a={1:'dd',aadd:false,'dd':33}
+    console.log(a)
+    const newA={...a}
+    console.log(newA)
+    const b=Object.assign(a)
+    const b=Object.assign({},a)
+    console.log(b)
+
+    const movable=document.querySelector('.movable')
+    // let count=0
+    let num=0
+    let speed=2
+    let diff
+    function func(time) {
+        // if(count==50){count=0;return}
+        const diff=(time-num)/1000
+        requestAnimationFrame(func)
+        if(diff< 1/speed)return
+        console.log(diff)
+        // count++
+        // movable.innerText=count
+        num=time
+    }
+    requestAnimationFrame(func)
+</script>
+</html>

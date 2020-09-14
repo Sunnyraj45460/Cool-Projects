@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="text" style="width: 300px;">
+    <button id="clip">Copy</button><br>
+    <input type="range" id="range" value="10" min="0" max="50"><br>
+    <input type="number" id="number" value="10" min="0" max="50"><br>
+    <input type="checkbox" id="in-nums">nums<br>
+    <input type="checkbox" id="in-capital">capital<br>
+    <input type="checkbox" id="in-small">small<br>
+    <input type="checkbox" id="in-symbols">symbols<br>
+    <button id="generate">Generate</button>
+</body>
+<script>
+    const range=document.getElementById('range')
+    const number=document.getElementById('number')
+    const text=document.getElementById('text')
+    const button=document.querySelector('#generate')
+    const innums=document.querySelector('#in-nums')
+    const incapital=document.querySelector('#in-capital')
+    const insmall=document.querySelector('#in-small')
+    const insymbols=document.querySelector('#in-symbols')
+
+    range.addEventListener('input',sync)
+    number.addEventListener('input',sync)
+    function sync(e){
+        range.value=e.target.value
+        number.value=e.target.value
+    }
+
+    button.addEventListener('click',generate)
+
+    function generate(){
+        clip.innerText='Copy'
+
+        const hasLower=insmall.checked
+        const hasUpper=incapital.checked
+        const hasSymbols=insymbols.checked
+        const hasNumber=innums.checked
+
+        checkif(hasLower,hasUpper,hasSymbols,hasNumber)
+        
+        function checkif(l,u,s,n){
+            const checkednumber=hasLower+hasUpper+hasNumber+hasSymbols
+            var pass=[]
+            if(checkednumber==0)return
+            for(i=0;i<number.value;i+=checkednumber){
+                const randomLower=String.fromCharCode(Math.floor(Math.random()*26)+97)
+                const randomUpper=String.fromCharCode(Math.floor(Math.random()*26)+65)
+                const randomNumber=String.fromCharCode(Math.floor(Math.random()*10)+48)
+                const symbols='!@#$%^&*(){}[]=<>/,.'
+                const randomSymbol=symbols[Math.floor(Math.random()*symbols.length)]
+                
+                if(l){
+                    pass.push(randomLower)
+                }
+                if(u){
+                    pass.push(randomUpper)       
+                }
+                if(s){
+                    pass.push(randomSymbol)       
+                }
+                if(n){
+                    pass.push(randomNumber)       
+                }
+            }
+            text.value=pass.join('')
+        }
+        if(number.value<4){text.value=text.value.slice(0,number.value)}
+    }
+    const clip=document.getElementById('clip')
+    clip.addEventListener('click',()=>{
+        if(!text.value){window.alert('Nothing to copy');return}
+        const ta=document.createElement('textarea')
+            ta.value=text.value
+            document.body.appendChild(ta)
+            ta.select()
+            document.execCommand('copy')
+            ta.remove()
+            clip.innerText='Copied'
+    })
+</script>
+</html>

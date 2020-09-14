@@ -1,0 +1,28 @@
+body{
+    position: relative;
+    height: 300vh;
+}
+
+/* .red{
+    height: 100px;
+    width: 100px;
+    background-color: red;
+} */
+
+p{
+    font-size: 1.5rem;
+    position: absolute;
+    top: 130vh;
+    opacity: 0; 
+    transform: translateY(50%);
+    transition:all 1s ease-in-out;
+}
+
+/* p:hover{
+    opacity: 1;
+    transform: translateY(0);
+} */
+p.appear{
+    opacity: 1;
+    transform: translateY(0);
+}

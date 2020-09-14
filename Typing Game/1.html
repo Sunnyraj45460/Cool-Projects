@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="file:///C:/Users/Sunny/Downloads/bootstrap-4.5.2-dist/bootstrap-4.5.2-dist/css/bootstrap.css"> -->
+<style>
+    .container{
+        color: white;
+        background: rgb(119, 116, 116);
+        width: 500px;
+    }
+    #typing,.type{
+        background: black;
+        min-height: 200px;
+        width: 100%;
+        font-size:1.4rem;
+        background-color:rgb(39, 39, 39)
+    }
+    .clean{
+        color: green;
+    }
+    .bad{
+        color: red;
+        text-decoration:underline;
+    }
+</style>
+<body style="background-color:rgb(39, 39, 39);height: 100vh;justify-content: center;align-items: center;"class="d-flex">
+    <div class="container" style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
+        <h1 class="display-4 mb-4">Typing Game</h1>
+        <div class="head">
+            <span class="timer mr-5"style="font-size:1.6rem">100</span>
+            <span class="left ml-5"style="font-size:1.6rem"></span>
+        </div>
+        <div class="type mb-4"></div>
+        <textarea id="typing"style="color: white"></textarea>
+        <div class="buttons d-flex mt-3 mb-3">
+            <button class="btn btn-primary mr-4" id="reset">Reset</button>
+            <button class="btn btn-warning mr-4" id="next">Another</button>
+            <button class="btn btn-success mr-4" id="close">Close</button>
+        </div>
+    </div>
+</body>
+<script>
+document.getElementById('next').addEventListener('click',()=>{
+    type.innerHTML='';getQuote()})
+document.getElementById('close').addEventListener('click',()=>{
+    window.close()})
+document.getElementById('reset').addEventListener('click',()=>{
+    reset()
+    type.childNodes.forEach(i=>i.classList='')
+})
+
+function reset(){
+    typing.value=''
+    i=0
+    timer.innerText=100
+}
+
+const type=document.querySelector('.type')
+const left=document.querySelector('.left')
+async function getQuote(){
+    let a=await fetch('https://api.quotable.io/random')
+    let b=await a.json()
+    let c=b.content.split([])
+    c.forEach((l,i)=>{
+    const span=document.createElement('span')
+    span.innerText=c[i]
+    type.appendChild(span)
+    })
+    left.innerText='Total Words: '+c.length
+}
+getQuote()
+
+let i=0
+const typing=document.getElementById('typing')
+typing.addEventListener('input',e=>{
+    let b=typing.value.split([])
+    let length=e.target.value.length
+    if(i<length && i<type.childNodes.length){
+        for(i;i<e.target.value.length;i++){
+            if(type.children[i].innerText==b[i]){
+                type.children[i].classList.remove('bad')
+                type.children[i].classList.add('clean')
+            } 
+            else{
+                type.children[i].classList.remove('clean')
+                type.children[i].classList.add('bad')
+            }
+        }
+    }
+    else if(i==type.childNodes.length){
+        window.location.reload()
+    }
+    else{
+        --i
+        type.children[i].classList.remove('clean')
+        type.children[i].classList.remove('bad')
+    }
+})
+
+const timer=document.querySelector('.timer')
+setInterval(() => {
+    if(timer.innerText==0){
+        i=0
+        if(confirm('OUt of Time !!!')){window.location.reload();return}
+        else{window.close()}
+    }
+    timer.innerText--
+}, 1000);
+</script>
+</html>

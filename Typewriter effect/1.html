@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span class="span">I am a</span>
+</body>
+<style>
+    *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+body{
+    line-height: 100vh;
+    text-align: center;
+    background-color: rgb(39, 39, 39);
+}
+.span{
+    color: white;
+    position: relative;
+}
+.span::after{
+    position: absolute;
+    content: '';
+    top: 4px;
+    width: 1px;
+    height: 80%;
+    background-color: white;
+    animation: blinks 700ms ease-in-out 0s infinite;
+}
+@keyframes blinks{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+</style>
+<script>
+    const span=document.querySelector('.span')
+    const words=[' Programmer',' Developer',' Dontknow']
+    let count=0
+
+    setInterval(func,500)
+    
+    let wordCount=0
+    function func(){
+    const word=words[wordCount].slice(0,words[wordCount].length)
+        span.innerHTML+=word[count]
+        count+=1
+        if(count>word.length){
+            count=0
+            span.innerText='I am a'
+            wordCount++
+            if(wordCount==words.length){wordCount=0}
+            return
+        }
+    }
+</script>
+</html>

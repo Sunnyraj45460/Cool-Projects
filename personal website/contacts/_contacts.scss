@@ -1,0 +1,45 @@
+.body-div{
+    .contacts-div{
+        position: absolute;
+        top: 38%;
+        color: $white;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .me{
+        font-size: 50px;
+        margin-bottom: 2vh;
+        color: $orange;
+        font-weight: 600;
+    }
+
+    .d{
+        font-size: 25px;
+        display: grid;
+        grid-template-columns: repeat(3,auto);
+        grid-column-gap:7vh;
+
+        .v{
+            color: $orange;
+        }
+    }
+}
+
+@media(max-width:1100px){
+    .body-div{
+        .d{
+            grid-template-columns: repeat(2,auto);
+            grid-row-gap: 3vh;
+        }
+    }
+}
+
+@media(max-width:730px){
+    .body-div{
+        .d{
+            grid-template-columns: repeat(1,auto);
+        }
+    }
+}
