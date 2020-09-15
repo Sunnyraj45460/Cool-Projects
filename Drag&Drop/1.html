@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        display: flex;
+        flex-direction:row;
+    }
+    .containers{
+        margin: 20px;
+        height:100px;
+        width: 100px;
+        border: 2px solid black;
+    }
+    #item{
+        height: 100%;
+        width: 100%;
+        background-color: rgb(39, 39, 39);
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="containers"><div id="item" draggable="true"></div></div>
+        <div class="containers"></div>
+        <div class="containers"></div>
+        <div class="containers"></div>
+        <div class="containers"></div>
+    </div>
+</body>
+<script>
+    const containers=document.querySelectorAll('.containers')
+    const item=document.getElementById('item')
+
+    item.addEventListener('dragstart',()=>{})
+    item.addEventListener('dragend',()=>{})
+
+    containers.forEach(container=>{
+        container.addEventListener('dragover',e=>e.preventDefault())
+        container.addEventListener('dragenter',e=>{})
+        container.addEventListener('dragleave',e=>{})
+        container.addEventListener('drop',e=>container.appendChild(item))
+    })
+</script>
+</html>
