@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        perspective: 800px;
+        background-color: rgb(39, 39, 39);
+    }
+    .shoe{
+        width: 120%;
+    }
+    .div{
+        margin:100px 0 0 100px ;
+        height: 280px;
+        width: 280px;
+        background-color: steelblue;
+        border-radius: 50%;
+        transform-origin: center;
+        transform-style: preserve-3d;
+        transition: all 600ms ease-in-out;
+    }
+    .price-tag{
+        position: absolute;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        content: '';
+        line-height: 100px;
+        width: 100px;
+        background-color: salmon;
+        opacity: 0;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        font-size: 2rem;
+        text-align: center;
+        color: white;
+        transition: all 600ms ease-in-out; 
+    }
+    .div.clicked{
+        background-color: salmon;
+        transform: rotateY(360deg);
+        height: 350px;
+        width: 350px;
+    }
+    .price-tag.clicked{
+        transform: translateX(-45%)translateY(25%);
+        opacity: 1;
+        top: 85%;
+        left: 50%;
+    }
+    .shoe.clicked{
+        width: 120%;
+    }
+    /* .w1{ */
+        /* width: 300px; */
+        /* clip-path: circle(30% at 50% 50%); */
+        /* clip-path: ellipse(10% 50% at 50% 50%); */
+        /* clip-path: inset(50% 50% 0% 0%); */
+        /* clip-path: polygon(50% 50% , 0% 50% , 50% 10%); */
+        /* border-radius: 50%; */
+        /* float: left; */
+        /* shape-outside: circle(30% at 50% 50%); */
+        /* shape-margin: 10px; */
+    /* } */
+    /* .object-fit{
+        height: 300px;
+        width: 300px;
+        background-color: red;
+    }
+    .w2{
+        width: 100%;
+        object-fit: contain;
+    } */
+</style>
+<body>
+    <div class="div">
+        <img class="shoe" src="C:/Users/Sunny/Downloads/Shoes_Img/shoe-1.png">
+        <div class="price-tag">$99</div>
+    </div>
+    <!-- <img class="w1" src="C:/Users/Sunny/Downloads/wallpapers/5.jpg" alt="">
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis quasi eius aspernatur optio deserunt nesciunt porro nisi dolor. Quae, assumenda excepturi nihil asperiores culpa soluta! Facilis, dolorum repellat quo minus, vero laboriosam recusandae cupiditate unde harum debitis magnam? Vel officia ratione debitis dolorem minima nihil quasi possimus, iure tenetur dolorum?
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis quasi eius aspernatur optio deserunt nesciunt porro nisi dolor. Quae, assumenda excepturi nihil asperiores culpa soluta! Facilis, dolorum repellat quo minus, vero laboriosam recusandae cupiditate unde harum debitis magnam? Vel officia ratione debitis dolorem minima nihil quasi possimus, iure tenetur dolorum?
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis quasi eius aspernatur optio deserunt nesciunt porro nisi dolor. Quae, assumenda excepturi nihil asperiores culpa soluta! Facilis, dolorum repellat quo minus, vero laboriosam recusandae cupiditate unde harum debitis magnam? Vel officia ratione debitis dolorem minima nihil quasi possimus, iure tenetur dolorum?
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis quasi eius aspernatur optio deserunt nesciunt porro nisi dolor. Quae, assumenda excepturi nihil asperiores culpa soluta! Facilis, dolorum repellat quo minus, vero laboriosam recusandae cupiditate unde harum debitis magnam? Vel officia ratione debitis dolorem minima nihil quasi possimus, iure tenetur dolorum?
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis quasi eius aspernatur optio deserunt nesciunt porro nisi dolor. Quae, assumenda excepturi nihil asperiores culpa soluta! Facilis, dolorum repellat quo minus, vero laboriosam recusandae cupiditate unde harum debitis magnam? Vel officia ratione debitis dolorem minima nihil quasi possimus, iure tenetur dolorum?
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis quasi eius aspernatur optio deserunt nesciunt porro nisi dolor. Quae, assumenda excepturi nihil asperiores culpa soluta! Facilis, dolorum repellat quo minus, vero laboriosam recusandae cupiditate unde harum debitis magnam? Vel officia ratione debitis dolorem minima nihil quasi possimus, iure tenetur dolorum? -->
+    <!-- <div class="object-fit">
+            <img class="w2" src="C:/Users/Sunny/Downloads/wallpapers/6.jpg" alt="">
+    </div> -->
+</body>
+<script>
+    const div=document.querySelector('.div')
+    div.addEventListener("click",()=>{
+        div.classList.toggle("clicked")
+        document.querySelector('.price-tag').classList.toggle("clicked")
+        document.querySelector('.shoe').classList.toggle("clicked")
+    })
+</script>
+</html>
